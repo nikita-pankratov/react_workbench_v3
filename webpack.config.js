@@ -10,7 +10,7 @@ const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 
 const jsSourcePath = path.join(__dirname, './source/js');
-const buildPath = path.join(__dirname, './build');
+const buildPath = path.join(__dirname, './dist');
 const imgPath = path.join(__dirname, './source/assets/img');
 const sourcePath = path.join(__dirname, './source');
 

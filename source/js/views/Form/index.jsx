@@ -3,14 +3,12 @@ import React, { Component } from 'react';
 export default class Form extends Component {
     render() {
         return (
-            <div className="Form">
-                <form>
-                    <label>Login:
-                        <input type="text" name="username" />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
-            </div>
+            <SignUpForm
+                onSubmit={(e) => console.log('submitted')}
+                onChange={(e) => console.log('changed')}
+                errors={{ email: 'Invalid' }}
+                user={{ email: 'jane@doe.com', name: 'Jane Doe' }}
+            />
         );
     }
 
