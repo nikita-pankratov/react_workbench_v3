@@ -9,10 +9,11 @@ const autoprefixer = require('autoprefixer');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 
-const jsSourcePath = path.join(__dirname, './source/js');
+const jsSourcePath = path.join(__dirname, './client/source/js');
+const indexHtmlPath = path.join(__dirname, './server/static');
 const buildPath = path.join(__dirname, './dist');
-const imgPath = path.join(__dirname, './source/assets/img');
-const sourcePath = path.join(__dirname, './source');
+const imgPath = path.join(__dirname, './client/source/assets/img');
+const sourcePath = path.join(__dirname, './client/source');
 
 // Common plugins
 const plugins = [
@@ -28,7 +29,7 @@ const plugins = [
   }),
   new webpack.NamedModulesPlugin(),
   new HtmlWebpackPlugin({
-    template: path.join(sourcePath, 'index.html'),
+    template: path.join(indexHtmlPath, 'index.html'),
     path: buildPath,
     filename: 'index.html',
   }),
@@ -93,14 +94,15 @@ if (isProduction) {
   // Production rules
   rules.push(
     {
-      test: /\.scss$/,
+      test: /\.(scss|css)$/,
       loader: ExtractTextPlugin.extract({
         fallback: 'style-loader',
         use: 'css-loader!postcss-loader!sass-loader',
       }),
     }
   );
-} else {
+}
+else {
   // Development plugins
   plugins.push(
     new webpack.HotModuleReplacementPlugin(),
@@ -130,21 +132,22 @@ if (isProduction) {
 module.exports = {
   devtool: isProduction ? 'eval' : 'source-map',
   context: jsSourcePath,
-  entry: {
-    js: './index.js',
-    vendor: [
-      'babel-polyfill',
-      'es6-promise',
-      'immutable',
-      'isomorphic-fetch',
-      'react-dom',
-      'react-redux',
-      'react-router',
-      'react',
-      'redux-thunk',
-      'redux',
-    ],
-  },
+  entry: path.join(__dirname, '/client/source/app.jsx'),
+  // {
+  //   js: './index.js',
+  //   vendor: [
+  //     'babel-polyfill',
+  //     'es6-promise',
+  //     'immutable',
+  //     'isomorphic-fetch',
+  //     'react-dom',
+  //     'react-redux',
+  //     'react-router',
+  //     'react',
+  //     'redux-thunk',
+  //     'redux',
+  //   ],
+  // },
   output: {
     path: buildPath,
     publicPath: '/',

@@ -6,15 +6,16 @@ import thunk from 'redux-thunk';
 import 'babel-polyfill';
 import logger from 'dev/logger';
 
-import rootReducer from 'reducers';
-import Routes from 'routes';
+import rootReducer from 'reducers/index';
+import Routes from './js/routes';
 import DevTools from 'dev/redux-dev-tools';
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // Load SCSS
-// import '../scss/app.scss';
+// import '../../server/static/css/style.css';
+import './scss/app.scss'
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -62,11 +63,11 @@ if (isProduction) {
 ReactDOM.render(
     <MuiThemeProvider muiTheme={ getMuiTheme() }>
         { isProduction ?
-          <Routes /> :
-          <div>
-            <Routes />
-            <DevTools />
-          </div> }
+            <Routes /> :
+            <div>
+                <Routes />
+                <DevTools />
+            </div> }
     </MuiThemeProvider>,
     document.getElementById('react-app')
 );

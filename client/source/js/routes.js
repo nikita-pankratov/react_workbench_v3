@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-import App from 'views/App';
-import Dashboard from 'views/Dashboard';
-import Form from 'views/Form';
-import About from 'views/About';
-import NotFound from 'views/NotFound';
+// import App from 'source/js/containers/App';
+// import Dashboard from 'source/js/containers/Dashboard';
+// import Form from 'source/js/containers/Form';
+// import About from 'source/js/containers/About';
+import NotFound from './containers/NotFound/index.jsx';
 
 import Base from './components/Base.jsx';
 import HomePage from './components/HomePage.jsx';
-import LoginPage from './views/Login/index.jsx';
-import SignUpPage from './views/SignUp/index.jsx';
+import LoginPage from './containers/Login/index.jsx';
+import SignUpPage from './containers/SignUp/index.jsx';
 
 
 const publicPath = '/';

@@ -7,3 +7,5 @@ const HomePage = () => (
         <CardTitle title="React Application" subtitle="This is the home page." />
     </Card>
 );
+
+export default HomePage;
